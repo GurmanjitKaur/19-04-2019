@@ -1,0 +1,53 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      
+      <button 
+        class = "btn btn-primary" 
+        [disabled] = "serverName === ''"
+        (click) = "changeText()"
+        >Add Server</button>
+
+      <!-- If Else with ngIf        
+        <h3 *ngIf = "serverName ===''; else noServer">No Server is created</h3>  
+      <ng-template #noServer>
+        <h3>{{msgToDisplay}}</h3>
+      </ng-template>  -->   
+      
+      <hr>
+      <h3 *ngIf = "serverName !=''">{{msgToDisplay}}</h3>  
+      
+    </div> 
+
+
+    <!-- Using Event handling, Same can be done using two way binding
+    It will take te data from typescript to html and if we change
+    anything in html, It reflects back to Typescript -->
+   <!--  <div class="row">
+        <div class="col-md-4">
+          <label>Server Name</label>           
+        </div>
+        <div class = "col-sm-8">
+            <input type="text"
+            class = "form-control" 
+            (input) = "onUpdateserverName($event)"/>
+        </div>
+        <h3>{{serverName}}</h3>
+  </div> -->
+
+  <!-- Using Two-way binding -->
+  <div class="row">
+      <div class="col-md-4">
+        <label>Server Name</label>           
+      </div>
+      <div class = "col-sm-8">
+          <input type="text"
+          class = "form-control" 
+          [(ngModel)] = "serverName"/>
+      </div>
+      <h3>{{serverName}}</h3>
+</div>
+</div>
+<app-server></app-server>
+<app-server></app-server>
+
