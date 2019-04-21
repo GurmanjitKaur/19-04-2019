@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: First Spring Boot Project
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: M1037484
+Implementation-Vendor-Id: com.learning.springboot
+Build-Jdk: 1.8.0_201
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/Project1
+Created-By: Maven Integration for Eclipse
+
