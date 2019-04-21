@@ -18,7 +18,7 @@
       <h3 *ngIf = "serverName !=''">{{msgToDisplay}}</h3>  
       
     </div> 
-
+  </div>
 
     <!-- Using Event handling, Same can be done using two way binding
     It will take te data from typescript to html and if we change
@@ -37,17 +37,18 @@
 
   <!-- Using Two-way binding -->
   <div class="row">
-      <div class="col-md-4">
+      <div class="col-xs-1 text-right">
         <label>Server Name</label>           
       </div>
-      <div class = "col-sm-8">
+      <div class = "col-xs-3">
           <input type="text"
           class = "form-control" 
           [(ngModel)] = "serverName"/>
       </div>
       <h3>{{serverName}}</h3>
 </div>
+
+<app-server></app-server>
+<app-server></app-server>
 </div>
-<app-server></app-server>
-<app-server></app-server>
 
