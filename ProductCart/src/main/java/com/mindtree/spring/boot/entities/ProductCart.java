@@ -1,6 +1,5 @@
 package com.mindtree.spring.boot.entities;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,11 +18,11 @@ public class ProductCart {
 	@Column(name = "product_cart_id")
 	private Integer productCartId;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "cart_id")
 	private Cart cart;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "product_id")
 	private Product product;
 	

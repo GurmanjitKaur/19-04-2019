@@ -11,8 +11,6 @@ public interface ShoppingCartDao {
 
 	void removeProductFromCart(int userId, int productId);
 
-	void updateQuantityOfProduct(int userId, Product product);
-
 	List<Product> viewProducts(int userId);
 
 }

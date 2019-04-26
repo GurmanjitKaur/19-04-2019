@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h4 [ngStyle]="{ color: 'blue'}">Add new servers or blueprints!</h4>
+    <label for="serverName">Server Name</label>
+    <!-- <input type="text" class="form-control" [(ngModel)]="serverName"> -->
+
+    <!-- doing the same with local reference as we are need data only on click two way binding is not required -->
+    <input type="text" class="form-control" #serverInputName>
+    <label for="blueprintName">Blueprint Name</label>
+    <!-- <input type="text" class="form-control" [(ngModel)]="blueprintName"> -->
+    <input type="text" class="form-control" #blueprintInputName>
+    <br>
+    <button class="btn btn-primary" (click)="onAddServer(serverInputName)">Add Server</button>
+    <button class="btn btn-primary" (click)="onAddBlueprint(blueprintInputName)">Add Blueprint</button>
+  </div>
+</div>

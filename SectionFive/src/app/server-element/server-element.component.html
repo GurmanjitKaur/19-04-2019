@@ -1,0 +1,7 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Test Server</div>
+  <div class="panel-body">
+    <em *ngIf = "element.type === 'Server'" [ngStyle] = "{color:'red'}">{{element.serverName}}</em>
+    <strong *ngIf = "element.type === 'Blueprint'" [ngStyle] = "{color:'blue'}">{{element.blueprintName}}</strong>
+  </div>
+</div>

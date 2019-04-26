@@ -22,29 +22,39 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
 	@Override
 	public void addProductToCart(ProductCart productCart) {
 		Integer userId = productCart.getCart().getUser().getUserId();
-		String hql = "FROM Cart WHERE user_id = '"+userId+"'";
-		List<?> cartList = entityManager.createQuery(hql).getResultList();
-		Cart cart = (Cart)cartList.get(0);
+		Integer productId = productCart.getProduct().getProductId();
+		String hql = "FROM ProductCart as model WHERE model.cart.user.userId = '"+userId+"'"
+				+ "and model.product.productId = '"+productId+"'";
+		List<?> prodCartList = entityManager.createQuery(hql).getResultList();
+		if(prodCartList.size()>0) {
+			ProductCart prodCart = (ProductCart)prodCartList.get(0);
+			prodCart.setQuantity(prodCart.getQuantity() + 1);
+			entityManager.merge(prodCart);
+			return;
+		}
+		String hql1 = "FROM Cart as model WHERE model.user.userId = '"+userId+"'";
+		Cart cart = (Cart) entityManager.createQuery(hql1).getSingleResult();
 		productCart.setCart(cart);
-		entityManager.flush();
+		entityManager.persist(productCart);
 	}
 
 	@Override
 	public void removeProductFromCart(int userId, int productId) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void updateQuantityOfProduct(int userId, Product product) {
-		// TODO Auto-generated method stub
-		
+		String hql = "FROM ProductCart as model WHERE model.cart.user.userId = '"+userId+"'"
+				+ "and model.product.productId = '"+productId+"'";
+		List<?> prodCartList = entityManager.createQuery(hql).getResultList();
+		ProductCart prodCart = (ProductCart)prodCartList.get(0);
+		if(prodCart.getQuantity() >1) {
+			prodCart.setQuantity(prodCart.getQuantity() - 1);
+			entityManager.merge(prodCart);
+			return;
+		}		
+		entityManager.remove(prodCart);		
 	}
 
 	@Override
 	public List<Product> viewProducts(int userId) {
-		// TODO Auto-generated method stub
-		return null;
+		String hql = "FROM ProductCart as model WHERE model.cart.user.userId = '"+userId+"'";
+		return entityManager.createQuery(hql).getResultList();
 	}
-
 }

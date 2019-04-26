@@ -31,12 +31,6 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 	}
 
 	@Override
-	public void updateQuantityOfProduct(int userId, Product product) {
-		shoppingCartDao.updateQuantityOfProduct(userId, product);
-
-	}
-
-	@Override
 	public List<Product> viewProducts(int userId) {
 		List<Product> products = shoppingCartDao.viewProducts(userId);
 		return products;
